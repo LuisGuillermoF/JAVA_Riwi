@@ -12,7 +12,7 @@ public class Main {
         int count = 0;
 
         int suma = 0;
-aaaaaa
+
         while(count <=100) {
             suma += count;
             count ++;
@@ -33,7 +33,7 @@ aaaaaa
 
 
          */
-        double saldo = 1000;
+/*        double saldo = 1000;
         String option;
         do {
             option = JOptionPane.showInputDialog(null,"\n\n Menu de opciones \n 1.Ver saldo \n 2.Deposite Dinero \n 3.Retirar \n 4.Salir");
@@ -80,12 +80,20 @@ aaaaaa
                     break;
             }
 
-        }while(!option.equals("4") );
+        }while(!option.equals("4") );*/
 
 
+        String[][] triqui = new String[3][3];
 
+        triqui[0][0]="X";
+        triqui[0][1]="X";
+        triqui[0][2]="X";
 
+        triqui[0][0]="o";
+        triqui[1][0]="o";
+        triqui[2][0]="o";
 
+        System.out.println(triqui);
 
 
     }
