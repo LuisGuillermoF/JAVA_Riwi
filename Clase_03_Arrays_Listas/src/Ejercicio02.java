@@ -22,32 +22,16 @@ public class Ejercicio02 {
 
             switch (Menu) {
                 case 1:
-                    String Fila = JOptionPane.showInputDialog(null, "Ingrese la fila (1-5)");
-                    int numberFila = Integer.parseInt(Fila);
-                    String Column = JOptionPane.showInputDialog(null, "Ingrese el asiento (1-10)");
-                    int numberColumn = Integer.parseInt(Column);
-
-                    if (asientos[numberFila][numberColumn] == false) {
-                        asientos[numberFila][numberColumn] = true;
-                        JOptionPane.showMessageDialog(null, "Asiento reservado correctamente");
-                    }
+                    addPerson(asientos);
+                    break;
                 case 2:
-                    String FilaDelete = JOptionPane.showInputDialog(null, "Ingrese la fila (1-5)");
-                    int numberFilaDelete = Integer.parseInt(FilaDelete);
-                    String ColumnDelete = JOptionPane.showInputDialog(null, "Ingrese el asiento (1-10)");
-                    int numberColumnDelete = Integer.parseInt(ColumnDelete);
-
-                    if (asientos[numberFilaDelete][numberColumnDelete] == false) {
-                        JOptionPane.showMessageDialog(null, "Asiento no ocupado");
-                    } else {
-                        asientos[numberFilaDelete][numberColumnDelete] = false;
-                        JOptionPane.showMessageDialog(null, "Asiento borrado");
-                    }
+                    deletePerson(asientos);
+                    break;
                 case 3:
                     printFilas(asientos);
                     break;
-
-
+                case 4:
+                    /*Viewcine(asientos);*/
             }
 
         } while (Menu != 5);
@@ -55,16 +39,61 @@ public class Ejercicio02 {
 
     }
 
+    public static void addPerson(boolean [][] agg){
+        String Fila = JOptionPane.showInputDialog(null, "Ingrese la fila (1-5)");
+        int numberFila = Integer.parseInt(Fila);
+        String Column = JOptionPane.showInputDialog(null, "Ingrese el asiento (1-10)");
+        int numberColumn = Integer.parseInt(Column);
 
-public static void printFilas(boolean[][] asientos) {
-    JOptionPane.showMessageDialog(null, "Asientos disponibles");
-    String cine = "";
-    for (int i = 0; i <= 5; i++) {
-        for (int j = 0; j <= 10; j++) {
-            cine += (i + 1) + " - " + (j + 1)+ " P ";
+        if (agg[numberFila][numberColumn] == false) {
+            agg[numberFila][numberColumn] = true;
+            JOptionPane.showMessageDialog(null, "Asiento reservado correctamente");
         }
-        cine+="\n";
     }
-    JOptionPane.showMessageDialog(null, "Disponibles" +"\n"+ cine);
-}
+
+    public static void deletePerson(boolean[][] delete){
+        String FilaDelete = JOptionPane.showInputDialog(null, "Ingrese la fila (1-5)");
+        int numberFilaDelete = Integer.parseInt(FilaDelete);
+        String ColumnDelete = JOptionPane.showInputDialog(null, "Ingrese el asiento (1-10)");
+        int numberColumnDelete = Integer.parseInt(ColumnDelete);
+
+        if (delete[numberFilaDelete][numberColumnDelete] == false) {
+            JOptionPane.showMessageDialog(null, "Asiento no ocupado");
+        } else {
+            delete[numberFilaDelete][numberColumnDelete] = false;
+            JOptionPane.showMessageDialog(null, "Asiento borrado");
+        }
+    }
+
+    public static void printFilas(boolean[][] asientos) {
+        JOptionPane.showMessageDialog(null, "Asientos disponibles");
+        String cine = "";
+        for (int i = 0; i <= 5; i++) {
+            for (int j = 0; j <= 10; j++) {
+                cine += (i + 1) + " - " + (j + 1)+ " P ";
+            }
+            cine+="\n";
+        }
+        JOptionPane.showMessageDialog(null, "Disponibles" +"\n"+ cine);
+    }
+
+    public static void Viewcine(boolean[][] count){
+        String libres = "";
+        String ocupados = "";
+
+        for (int i=0;i<=5;i++){
+            for (int j=0;j<=10;j++){
+                String contador = "";
+                if (count[i][j] == false){
+                    libres = contador;
+                }else {
+                    ocupados = contador;
+                }
+            }
+        }
+        JOptionPane.showMessageDialog(null,"Los puestos libres son:"+libres);
+    }
+
+
+
 }
