@@ -3,9 +3,9 @@ package Libreria;
 public class Libros {
         private String title ;
 
-        public String autor ;
+        private String autor ;
 
-        public String agePublic;
+        private String agePublic;
 
         public void Libro(){
             this.title = title;

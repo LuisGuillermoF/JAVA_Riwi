@@ -13,7 +13,7 @@ public class Main {
         un método para prestar y devolver el libro, cambiando el estado de prestado
         acorde.*/
 
-        ArrayList<ObjectInput> librery = new ArrayList<>();
+        ArrayList<Libros> librery = new ArrayList<>();
 
         String option ;
 
@@ -32,7 +32,7 @@ public class Main {
         }while (!option.equals("5"));
     }
 
-    public static void addNewBooks(ArrayList<ObjectInput> newBook){
+    public static void addNewBooks(ArrayList<Libros> newBook){
         Libros libro = new Libros();
 
         String title = JOptionPane.showInputDialog("Digite el nombre del libro");
@@ -43,8 +43,13 @@ public class Main {
         libro.setAutor(autor);
         libro.setAgePublic(age);
 
+        newBook.add(libro);
 
-        System.out.println(libro.getTitle()+libro.getAgePublic()+libro.getAutor());
+        String Libros = "Su libro es: "+newBook;
+        for (int i = 0; i <= newBook.size();i++){
+            Libros += newBook.get(i)+"\n";
+        }
+        System.out.println(Libros);
 
     }
 }
