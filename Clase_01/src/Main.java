@@ -1,104 +1,60 @@
-import javax.swing.*;
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+
 import java.util.Scanner;
 
 
-
 public class Main {
-    public static void main(String[] args){
-        // De la siguiente manera se puede imprimir un mensaje por consola
-        System.out.println("Hola Mundo");
+    public static void main(String[] args) {
+        // Press Alt+Enter with your caret at the highlighted text to see how
+        // IntelliJ IDEA suggests fixing it.
+        Scanner scanner = new Scanner(System.in);
+        int userChose = 0;
+        do {
+            try {
+                    System.out.println("""
+                        Hello and welcome, type the number for the operation you want to make \s
+                        1.Calculator\s
+                        2.Age verifier\s
+                        3.Unit converter \s
+                        4.IMC\s
+                        5.number classifier\s
+                        6.Days in a month\s
+                        7.Average calculation\s
+                        8.leap-year calculator\s
+                        9.Tip calculator\s
+                        10.Order three numbers \s
+                        11.Horoscope generator \s
+                        12.Taxi fare \s
+                        13.Temperature converter \s
+                        14.Qualification System.\s
+                        0. EXIT
+                        Choose an option:"""
+                    );
 
+                    userChose = scanner.nextInt();
+                    switch (userChose) {
+                        case 1:
+                            Calculator calculator = new Calculator(scanner);
+                            calculator.startCalculator();
+                            break;
 
+                        case 3:
+                            Conversor conversor = new Conversor();
+                            conversor.Converseitor();
+                        break;
+                        case 4:
+                            IMC imc = new IMC();
+                            imc.IMC_calculator();
+                        break;
+                    }
+                } catch (Exception e){
+                        System.out.print("Please enter a valid field\n");
+                    }
 
-
-
-
-        /*Scanner objScanner = new Scanner(System.in);
-        System.out.printf("Ingrese tu nombre: ");
-        String nombre = objScanner.next();
-
-        System.out.printf("Ingrese tu edad: ");
-        int edad = objScanner.nextInt();
-
-        System.out.printf("Ingrese su altura: ");
-        double altura = objScanner.nextDouble();
-
-        System.out.println("Datos: " + " Nombre es: " + nombre + " Edad es: " + edad + " Altura es: " + altura);
-        objScanner.close();
-
-        if (edad >= 18){
-            System.out.printf("Eres mayor de edad ");
-            if (altura < 1.60){
-                System.out.printf("Eres bajito ");
-            } else if (altura <= 1.70 ) {
-                System.out.printf("Eres una persona promedio ");
-            }else {
-                System.out.printf("Eres una persona alta ");
-            }
-        }else {
-            System.out.printf("Eres menor de edad ");
-        }*/
-
-
-        //Ejercicio 1
-        //Calculadora basica
-
-        /*Scanner objScanner1 = new Scanner(System.in);*/
-
-        String option = JOptionPane.showInputDialog(  null, "MENU DE OPERACIONES \n 1.Suma \n 2.Resta \n 3.Multiplicar \n 4.Dividir");
-
-
-        switch (option){
-            case "1":
-                //Obtener los datos ingresados
-                String num1 = JOptionPane.showInputDialog( null, "Ingrese el primer numero");
-                String num2 = JOptionPane.showInputDialog(null,"Ingrese el Segundo numero");
-
-                //Convertir los numeros que estan en String a enteros
-
-                double a = Double.parseDouble(num1);
-                double b = Double.parseDouble(num2);
-
-                JOptionPane.showMessageDialog(null,a+b);
-
-                break;
-            case "2":
-
-                String num3 = JOptionPane.showInputDialog(null,"Ingrese el primer numero");
-                String num4 = JOptionPane.showInputDialog(null,"Ingrese el Segundo numero");
-
-                double res1 = Double.parseDouble(num3);
-                double res2 = Double.parseDouble(num4);
-
-                JOptionPane.showMessageDialog(null,res1-res2);
-                break;
-            case "3":
-
-                String num5 = JOptionPane.showInputDialog(null,"Ingrese el primer numero");
-                String num6 = JOptionPane.showInputDialog(null,"Ingrese el Segundo numero");
-
-                double mul1 = Double.parseDouble(num5);
-                double mul2 = Double.parseDouble(num6);
-
-                JOptionPane.showMessageDialog(null, mul1*mul2);
-                break;
-            case "4":
-                String num7 = JOptionPane.showInputDialog(null,"Ingrese el primer numero");
-                String num8 = JOptionPane.showInputDialog(null,"Ingrese el Segundo numero");
-
-                double div1 = Double.parseDouble(num7);
-                double div2 = Double.parseDouble(num8);
-
-                if (div2 == 0){
-                    JOptionPane.showMessageDialog(null,"El numero tiene que ser mayor que cero");
-                }else {
-                    JOptionPane.showMessageDialog(null,div1/div2);
-                }
-
-                break;
-            default:
-                JOptionPane.showMessageDialog(null,"Opcion valida");
-        }
+        } while (userChose != 0);
+        scanner.close();
 
     }
 }
+

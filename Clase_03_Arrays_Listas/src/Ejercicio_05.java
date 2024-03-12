@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Ejercicio05 {
+public class Ejercicio_05 {
 
     /*Lista de Reproducción Musical: Imagina que estás creando una aplicación para
     gestionar listas de reproducción musicales. Cada canción es representada

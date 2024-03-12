@@ -1,94 +1,77 @@
-import Library.Book;
-
-import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+// import figures.GeometricFigure;
+
+// import figures.Circle;
+// import figures.Rectangle;
+// import figures.Square;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Book> library = new ArrayList<Book>() ;
+        // POINT #1
+        /*Book book = new Book();*/
 
-        Book objLibro = new Book("100 años de soledad","Gabriel Garcia Marquez", "01-05-1967",false);
-
-        String option;
-
-        do {
-            option = JOptionPane.showInputDialog("Librery\n" +
-                    "1.Add new book\n" +
-                    "2.Modifed a one book\n" +
-                    "3.Get the new book\n" +
-                    "4.Given the book");
-            switch (option){
-                case "1":
-                    addNewBook(library);
-                    break;
-                case "2":
-                    modifyBook(library);
-                    break;
-            }
-
-        }while (!option.equals("5"));
-    }
-
-    public static void addNewBook(ArrayList<Book> library){
-        String cadenaAux = "";
-        int index = 1;
-        Book newBooks = new Book();
-
-        String title = JOptionPane.showInputDialog("Digite el nombre del libro");
-        String autor = JOptionPane.showInputDialog("Digite el nombre del autor");
-        String age = JOptionPane.showInputDialog("Digite el año de publicacion");
-
-        newBooks.setTitle(title);
-        newBooks.setAutor(autor);
-        newBooks.setAgePublic(age);
-
-        int id = 0;
-
-        int increment = id+1;
-
-        newBooks.setId(increment);
-
-        library.add(newBooks);
+        // POINT #2
+        /*Employee employee = new Employee();
+        Employee employee1 = new Employee("pepe","papo",1000,10);
+        */
+        //Below you can test both programs,
 
 
-        for (int i = 0; i < library.size();i++){
-            cadenaAux +=library.get(i)+"\n";
-        }
-        JOptionPane.showMessageDialog(null,cadenaAux);
+        /*-----------------------------------------------------------------------------------------------------------*/
 
-    }
+        // POINT #3
+        /*bankAccount bankAccount = new bankAccount("pepe",19999);
 
-    public static void modifyBook(ArrayList<Book> library){
-        String cadenaAux = "";
-        Book modifyBooks = new Book();
+        System.out.println("Welcome to your bankAccount " + bankAccount.getOwner() + " Your balance is " + bankAccount.getBalance());
 
-        int id = modifyBooks.getId();
+        System.out.println("Type the ammount you want to retire: ");
+        double decrement = scanner.nextDouble();
+        bankAccount.decreaseBalance(decrement);
 
-        String title = modifyBooks.getTitle();
-        String autor = modifyBooks.getAutor();
-        String age = modifyBooks.getAgePublic();
+        System.out.println("Type the ammount you want to add: ");
+        double increment = scanner.nextDouble();
+        bankAccount.increaseBalance(increment);*/
 
-        for (int j = 0; j < library.size();j++){
-            cadenaAux +=library.get(j)+"\n";
-            System.out.println(cadenaAux);
-        }
-        String option = JOptionPane.showInputDialog(null,"Eliga el nombre del libro que desea modificar\n"+cadenaAux);
+        // POINT #4
+        /*Circle circle = new Circle(2);
+        System.out.println(circle.calculateArea());
 
-        for (int i = 0; i < library.size();i++){
+        Rectangle rectangle = new Rectangle(2,4);
+        System.out.println(rectangle.calculateArea());
 
-            if (option == modifyBooks.getTitle()){
-                String newTitle = JOptionPane.showInputDialog("Digite el nombre nuevo del libro");
-                String newAutor = JOptionPane.showInputDialog("Digite el nombre nuevo del autor");
-                String newAge = JOptionPane.showInputDialog("Digite la nuevo fecha de publicacion");
-                modifyBooks.setTitle(newTitle);
-                modifyBooks.setAutor(newAutor);
-                modifyBooks.setAgePublic(newAge);
-            }else {
-                JOptionPane.showMessageDialog(null,"No es valido el libro");
-            }
-        }
+        Square square = new Square(4);
+        System.out.println(square.calculateArea());*/
 
+        //POINT 5
+        /*Product objProduct = new Product();
 
+        int increment = scanner.nextInt();
+        objProduct.addStock(increment);
+        System.out.println(objProduct.getStock());
+
+        int decrement = scanner.nextInt();
+        objProduct.removeStock(decrement);
+        System.out.println(objProduct.getStock());*/
+        
+        //POINT 6
+        /*Student objStudent = new Student();
+        objStudent.setName("pepe");
+        ArrayList<Double> grade = new ArrayList<>(Arrays.asList(2.0,1.0,3.0,4.0,2.0));
+
+        objStudent.setGrades(grade);
+        System.out.println("Hello");
+        System.out.println(objStudent.getName());
+
+        System.out.println(objStudent.averageGrades());
+        objStudent.addGrades(5);
+        System.out.println(objStudent.getGrades());*/
+
+        scanner.close();
     }
 }

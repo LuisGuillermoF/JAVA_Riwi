@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.text.html.Option;
 
 public class Ejercicio02 {
 
