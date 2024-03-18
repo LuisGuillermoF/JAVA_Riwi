@@ -40,8 +40,10 @@ public class ConfigDB {
     public static void closeConnection(){
         try{
             //Si hay una conexion activa entonces la cierra
-            if (objConnection != null) objConnection.close();
-            System.out.println("Se finalizo la conexion con exito");
+            if (objConnection != null){
+                objConnection.close();
+                System.out.println("Se finalizo la conexion con exito");
+            }
         }catch (SQLException error){
             System.out.println("ERROR >> error al desconectar la base de datos"+error.getMessage());
         }
