@@ -21,7 +21,7 @@ public class ConfigDB {
 
             String user = "root";
 
-            String password = "";
+            String password = "Rlwl2023.";
 
             //establecer la conexion
             objConnection = (Connection) DriverManager.getConnection(url,user,password);
