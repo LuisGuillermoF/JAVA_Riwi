@@ -33,6 +33,18 @@ public class CoderModel implements CRUD {
             objPrepare.setString(1,objCoder.getName());
             objPrepare.setInt(2,objCoder.getAge());
             objPrepare.setString(3,objCoder.getClan());
+
+            //6 Ejecutar el Query
+            objPrepare.execute();
+
+            //7 Obtener el resultado con los ids (llaves)
+
+            ResultSet objResult = objPrepare.getGeneratedKeys();
+
+            while (objResult.next()){
+                objCoder.setId(objResult.getInt(1));
+            }
+
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
