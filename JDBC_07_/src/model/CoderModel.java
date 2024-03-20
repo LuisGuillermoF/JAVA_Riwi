@@ -112,6 +112,82 @@ public class CoderModel implements CRUD {
 
     @Override
     public boolean delete(Object obj) {
-        return false;
+
+        //1. convertir el obj a coder
+
+        Coder objCoder = (Coder) obj;
+
+        //2. Abrimos la conexion
+        Connection objConnection = ConfigDB.openConnection();
+
+        //3.Crear una variable de estado
+        boolean isDelete = false;
+
+        try{
+            //4. Escribir el sql
+            String sql = "DELETE FROM coder WHERE id  = ?;";
+
+            //5. Creamos el pepare statement
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            //6.Ingresar valor al ?
+            objPrepare.setInt(1,objCoder.getId());
+
+            //7. Ejecutamos el Query
+            int totalAfectedRows = objPrepare.executeUpdate();
+
+            //7.1 Si las filas afectados fueron mayores a 0 si se elimino algo
+            if (totalAfectedRows > 0){
+                JOptionPane.showMessageDialog(null,"The update was successful");
+            }
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+
+        //8 Cerramos la conexion
+        ConfigDB.closeConnection();
+        return isDelete;
+    }
+
+    public Coder findById(int id){
+        //1. abrimos la conexion
+
+        Connection objConection = ConfigDB.openConnection();
+
+        //2 Crear el coder que vamos a retornar
+        Coder objCoder = null;
+
+        try {
+
+            //3. Sentendia sql
+            String sql = "SELEC * FROM coder WHERE id = ?;";
+
+            //4. preparamos el prepare
+            PreparedStatement objprepare = objConection.prepareStatement(sql);
+
+            //5. Darle valor al parametrod al Query
+            objprepare.setInt(1,id);
+
+            //6. Executamos el Query
+            ResultSet objResult = objprepare.executeQuery();
+            if (objResult.next()){
+                objCoder = new Coder();
+                objCoder.setAge(objResult.getInt("age"));
+                objCoder.setName(objResult.getString("name"));
+                objCoder.setClan(objResult.getString("clan"));
+                objCoder.setId(objResult.getInt("id"));
+            }
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+
+        //7 Cerramos la conexion
+        ConfigDB.closeConnection();
+
+        return objCoder;
     }
 }
