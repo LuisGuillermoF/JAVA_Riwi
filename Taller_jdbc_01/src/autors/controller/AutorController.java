@@ -21,6 +21,20 @@ public class AutorController {
         JOptionPane.showMessageDialog(null,listAutors);
     }
 
+    public static String getAll(){
+
+        AutorModel objAutorModel = new AutorModel();
+
+        String listAutors = "AUTORS LIST\n";
+
+        for (Object Autor:  objAutorModel.findAll()){
+
+            Autor objAutor = (Autor) Autor;
+            listAutors += objAutor.toString()+"\n";
+        }
+        return listAutors;
+    }
+
     public static void createAutors(){
 
         AutorModel objAutorModel = new AutorModel();
@@ -37,5 +51,25 @@ public class AutorController {
 
         JOptionPane.showMessageDialog(null,objAutor.toString());
 
+    }
+
+    public static void deleteAutor(){
+
+        AutorModel objAutorModel = new AutorModel();
+
+        String listAutors = getAll();
+
+        int idDelete = Integer.parseInt(JOptionPane.showInputDialog(listAutors+"\n Insert id  the coder to delete\n"));
+
+        Autor objAutor = objAutorModel.findById(idDelete);
+
+
+        if (objAutor == null){
+            JOptionPane.showMessageDialog(null, "Autor not found");
+        }else {
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure want to delete the coder ?\n" + objAutor.toString());
+            if (confirm == 0) {
+                objAutorModel.delete(objAutor);
+        }
     }
 }

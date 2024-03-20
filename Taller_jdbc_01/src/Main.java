@@ -30,6 +30,9 @@ public class Main {
                 case "2":
                     AutorController.createAutors();
                     break;
+                case "4":
+                    AutorController.deleteAutor();
+                    break;
             }
 
         }while (!option.equals("9"));
