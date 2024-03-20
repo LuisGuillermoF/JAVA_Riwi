@@ -30,7 +30,7 @@ public class Empleado extends Persona {
 
     @Override
     public String toString() {
-        return super.getName()+super.getAge()+
+        return super.toString()+
                 "Empleado" +
                 "idEmpleado=" + idEmpleado +
                 ", salary=" + salary;

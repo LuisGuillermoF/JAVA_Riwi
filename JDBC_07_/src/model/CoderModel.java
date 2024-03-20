@@ -107,7 +107,37 @@ public class CoderModel implements CRUD {
 
     @Override
     public boolean update(Object obj) {
-        return false;
+
+        //1. abrimos la conexion
+        Connection objConnection = ConfigDB.openConnection();
+
+        Coder objCoder = (Coder) obj;
+
+        try{
+
+            //2 hacemos el Query
+            String sql = "UPDATE coder(name,age,clan) VALUES (?,?,?) WHERE id = ?;";
+
+            //3. Establecemos el prepare
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+
+
+            objPrepare.setString(1,objCoder.getName());
+            objPrepare.setInt(2,objCoder.getAge());
+            objPrepare.setString(3,objCoder.getClan());
+            objPrepare.setInt(4,objCoder.getId());
+
+            //4. Obtenemos la respuest
+            ResultSet objResult = objPrepare.executeQuery();
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -162,7 +192,7 @@ public class CoderModel implements CRUD {
         try {
 
             //3. Sentendia sql
-            String sql = "SELEC * FROM coder WHERE id = ?;";
+            String sql = "SELECT * FROM coder WHERE id = ?;";
 
             //4. preparamos el prepare
             PreparedStatement objprepare = objConection.prepareStatement(sql);
@@ -189,5 +219,47 @@ public class CoderModel implements CRUD {
         ConfigDB.closeConnection();
 
         return objCoder;
+    }
+
+    public ArrayList<Coder> findByName (String name){
+        //1. Abrimos la conexion
+
+        Connection objConection = ConfigDB.openConnection();
+
+        Coder objCoder = null;
+
+        ArrayList<Coder> listCoders = new ArrayList<>();
+
+        try {
+            //3. hacemos Query slq
+            String sql = "SELECT * FROM coder WHERE name like ?";
+
+            PreparedStatement objPrepare = objConection.prepareStatement(sql);
+
+            objPrepare.setString(1,"%"+name+"%");
+
+            ResultSet objResult = objPrepare.executeQuery();
+
+            while (objResult.next()){
+                objCoder = new Coder();
+                objCoder.setId(objResult.getInt("id"));
+                objCoder.setName(objResult.getString("name"));
+                objCoder.setClan(objResult.getString("clan"));
+                objCoder.setAge(objResult.getInt("age"));
+
+                listCoders.add(objCoder);
+            }
+
+
+
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+
+        ConfigDB.closeConnection();
+
+        return listCoders;
     }
 }
