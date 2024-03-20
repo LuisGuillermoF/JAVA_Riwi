@@ -24,7 +24,7 @@ public class CoderModel implements CRUD {
 
         try{
             //3 Escribir el SQL
-            String sql = "INSER INTO coder (name,age,clan) VALUES (?,?,?);";
+            String sql = "INSERT INTO coder (name,age,clan) VALUES (?,?,?);";
 
             //4 preparar el Statement
             PreparedStatement objPrepare = objConnection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
