@@ -25,6 +25,8 @@ public class Main {
                 case "1":
                     CoderController.getAll();
                     break;
+                case "2":
+                    CoderController.create();
             }
 
         }while (!option.equals("6"));

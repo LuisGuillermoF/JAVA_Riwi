@@ -41,7 +41,9 @@ public class CoderModel implements CRUD {
 
             ResultSet objResult = objPrepare.getGeneratedKeys();
 
+            //8. Iterar mientras haya un registro
             while (objResult.next()){
+                //Podemos obtener  el valor  tambien con indices
                 objCoder.setId(objResult.getInt(1));
             }
 
@@ -49,7 +51,8 @@ public class CoderModel implements CRUD {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
 
-        return null;
+        ConfigDB.closeConnection();
+        return objCoder;
     }
 
     @Override
