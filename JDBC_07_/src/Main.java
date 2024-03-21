@@ -29,8 +29,7 @@ public class Main {
                     CoderController.create();
                     break;
                 case "3":
-                    CoderController.getAll();
-                    CoderController.
+                    CoderController.update();
                     break;
                 case "4":
                     CoderController.delete();

@@ -111,12 +111,14 @@ public class CoderModel implements CRUD {
         //1. abrimos la conexion
         Connection objConnection = ConfigDB.openConnection();
 
+        //2 pasamos el obj a coder
         Coder objCoder = (Coder) obj;
+
 
         try{
 
             //2 hacemos el Query
-            String sql = "UPDATE coder(name,age,clan) VALUES (?,?,?) WHERE id = ?;";
+            String sql = "UPDATE coder SET name=?,age=?,clan=? WHERE id = ?;";
 
             //3. Establecemos el prepare
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
@@ -129,12 +131,18 @@ public class CoderModel implements CRUD {
             objPrepare.setInt(4,objCoder.getId());
 
             //4. Obtenemos la respuest
-            ResultSet objResult = objPrepare.executeQuery();
+            int totalRowsAfected = objPrepare.executeUpdate();
+
+            if (totalRowsAfected > 0){
+                JOptionPane.showMessageDialog(null,"The update was successful");
+            }
 
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
             return false;
+        }finally {
+            ConfigDB.closeConnection();
         }
 
         return true;

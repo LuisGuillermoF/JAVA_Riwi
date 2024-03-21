@@ -73,3 +73,27 @@ public class AutorController {
         }
     }
 }
+
+    public static void updateAutors(){
+
+        AutorModel objAutorModel = new AutorModel();
+
+        String listAutor = getAll();
+
+        int update = Integer.parseInt(JOptionPane.showInputDialog(listAutor+"\nInsert the id for edit\n"));
+
+        Autor objAutor = objAutorModel.findById(update);
+
+        if (objAutor == null){
+            JOptionPane.showMessageDialog(null,"The autor no found");
+        }else {
+            System.out.println(objAutor.toString());
+            String name = JOptionPane.showInputDialog(null,"insert the new name",objAutor.getName());
+            String nationality = JOptionPane.showInputDialog(null,"Insert the new nationality",objAutor.getNationality());
+
+            objAutor.setName(name);
+            objAutor.setNationality(nationality);
+            objAutorModel.update(objAutor);
+        }
+    }
+}

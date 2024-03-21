@@ -103,7 +103,25 @@ public class CoderController {
 
         CoderModel objCoderModel = new CoderModel();
 
+        String listCoders = getAllString();
 
+        int update = Integer.parseInt(JOptionPane.showInputDialog(listCoders+"\n Insert the id for edit \n"));
+
+        Coder objCoder = objCoderModel.findById(update);
+
+        if (objCoder == null){
+            JOptionPane.showMessageDialog(null, "Coder not found");
+        } else {
+            String name = JOptionPane.showInputDialog(null,"insert the new name",objCoder.getName());
+            String clan = JOptionPane.showInputDialog(null,"Insert the new clan",objCoder.getClan());
+            int age =Integer.parseInt( JOptionPane.showInputDialog(null,"Insert the new age",String.valueOf(objCoder.getAge())));
+
+            objCoder.setAge(age);
+            objCoder.setClan(clan);
+            objCoder.setName(name);
+
+            objCoderModel.update(objCoder);
+        }
 
 
     }

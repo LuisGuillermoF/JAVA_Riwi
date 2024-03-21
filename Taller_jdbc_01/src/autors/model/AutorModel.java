@@ -4,6 +4,7 @@ import autors.entity.Autor;
 import database.ConfigDB;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +115,7 @@ public class AutorModel {
 
         try{
 
-            String sql = "SELECT * FROM autor WHERE id = ?;";
+            String sql = "SELECT * FROM autors WHERE id = ?;";
 
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
@@ -125,6 +126,7 @@ public class AutorModel {
                 objAutor = new Autor();
                 objAutor.setNationality(objResult.getString("nationality"));
                 objAutor.setName(objResult.getString("name"));
+                objAutor.setId(objResult.getInt("id"));
             }
 
         }catch (SQLException e){
@@ -134,4 +136,36 @@ public class AutorModel {
         return objAutor;
     }
 
+    public boolean update(Object obj){
+
+        Connection objConnection = ConfigDB.openConection();
+
+        Autor objAutor = (Autor) obj;
+
+        try{
+
+            String sql = "UPDATE autors SET name=?,nationality=? WHERE id=?;";
+
+            PreparedStatement objprepare = objConnection.prepareStatement(sql);
+
+            objprepare.setString(1,objAutor.getName());
+            objprepare.setString(2,objAutor.getNationality());
+            objprepare.setInt(3,objAutor.getId());
+
+            int totalRowsAfected = objprepare.executeUpdate();
+
+
+            if (totalRowsAfected > 0){
+                JOptionPane.showMessageDialog(null,"The update was successful" +objAutor.toString());
+            }
+
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+            return false;
+        }finally {
+            ConfigDB.closeConnection();
+        }
+        return true;
+    }
 }

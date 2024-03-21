@@ -6,35 +6,57 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
 
-        String option = "";
+        String optionAutors = "";
+        String optionMenu = "";
+        String optionBooks = "";
 
         do {
-            option = JOptionPane.showInputDialog("""
-                    1. List Autors
-                    2. Insert Autors
-                    3. Update Autors
-                    4. Delete Autors
-                    5. List Books
-                    6. Insert Autors
-                    7. Update Autors
-                    8. Delete Autors
-                    9. Exit
+            optionMenu = JOptionPane.showInputDialog("""
+                    1. Autors
+                    2. Books
+                    3. Exit
                     
                     Choose an option:
                     """);
 
-            switch (option){
+            switch (optionMenu) {
                 case "1":
-                    AutorController.getAllAutors();
+                    optionAutors = JOptionPane.showInputDialog("""
+                    1. List Autors
+                    2. Insert Autors
+                    3. Update Autors
+                    4. Delete Autors
+                    
+                    
+                    Choose an option:
+                    """);
+
+                    switch (optionAutors){
+                        case "1":
+                            AutorController.getAllAutors();
+                            break;
+                        case "2":
+                            AutorController.createAutors();
+                            break;
+                        case "3":
+                            AutorController.updateAutors();
+                            break;
+                        case "4":
+                            AutorController.deleteAutor();
+                            break;
+                    }
                     break;
                 case "2":
-                    AutorController.createAutors();
-                    break;
-                case "4":
-                    AutorController.deleteAutor();
+                    optionBooks = JOptionPane.showInputDialog("""
+                            1. List Books
+                            2. Insert Autors
+                            3. Update Autors
+                            4. Delete Autors
+                            5. Exit
+                            """);
                     break;
             }
 
-        }while (!option.equals("9"));
+        }while (!optionMenu.equals("3"));
     }
 }
