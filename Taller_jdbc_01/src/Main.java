@@ -1,4 +1,6 @@
 import autors.controller.AutorController;
+import books.controller.BookController;
+import books.model.BookModel;
 import database.ConfigDB;
 
 import javax.swing.*;
@@ -54,6 +56,19 @@ public class Main {
                             4. Delete Autors
                             5. Exit
                             """);
+                    switch (optionBooks){
+                        case "1":
+                            BookController.getAllBooks();
+                            break;
+                        case "2":
+                            BookController.insertBook();
+                            break;
+                        case "3":
+                            break;
+                        case "4":
+                            BookController.deleteBooks();
+                            break;
+                    }
                     break;
             }
 
